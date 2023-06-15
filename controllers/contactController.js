@@ -9,6 +9,12 @@ const getContacts = (req, res) => {
 //@route POST /api/contacts
 //@access public
 const createContact = (req, res) => {
+    console.log("The request body is :", req.body);
+    const {firstName, lastName, numberPhone, address} = req.body;
+    if(!firstName || !lastName || !numberPhone || !address ) {
+        res.status(400);
+        throw new Error("All fields must not be empty!");
+    }
     res.status(201).json({ message: "Create Contact"});
 };
 
